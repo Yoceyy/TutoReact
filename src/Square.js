@@ -3,33 +3,27 @@ import React from "react";
 export default class Square extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {      
-          value: null,
+        this.state = {
+            value: null,
         };
-      }
+    }
 
-      renderSquare(i) {
-        return (
-          <Square
-            value={this.state.squares[i]}
-            onClick={() => this.handleClick(i)}
-          />
-        );
-      }
+    wrapClick() {
+        this.setState({value: this.props.next})
+        this.props.onClick();
 
-
+    }
 
     render() {
-      return (
-        <button 
-        className="square" 
-        onClick={() => this.setState({value: 'X'})}    
-          >
-          {this.state.value}
-        </button>
-      );
+        return (
+            <button
+                className="square"
+                onClick={() => this.wrapClick()}>
+                {this.state.value}
+            </button>
+        );
     }
-  }
+}
   
 
 
